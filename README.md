@@ -2,7 +2,7 @@
 
 ## REST API
 
-The POSTman documentation of the REST API can be found @
+The POSTman documentation of the REST API can be found @ https://documenter.getpostman.com/view/3653795/SVfWN6KS
 
 ## Examples
 
