@@ -24,7 +24,7 @@ Example query string:
 
 The WebSockets emit the following messages:
 
-#### Order Status Message
+### Order Status Message
 It's only received on *authenticated* websockets (i.e. the connection string includes a valid `token` query parameter).
 
 Follows the same format as returned by REST API endpoints
@@ -57,7 +57,7 @@ Follows the same format as returned by REST API endpoints
 }
 ```
 
-#### Wallet Update Message
+### Wallet Update Message
 It's only received on *authenticated* websockets (i.e. the connection string includes a valid `token` query parameter).
 
 Follows the same format as the `walletHistory` entries in the REST API, additionally the **walletId**, **currency**, **label** and the most current **balance** are indicated
@@ -84,7 +84,7 @@ Follows the same format as the `walletHistory` entries in the REST API, addition
 }
 ```
 
-#### Book Update message
+### Book Update message
 It's only received for *subscribed* pairs (i.e. the connection string includes a valid `pairs` query parameter).
 
 Every update includes a CRC32 `checksum` of the book so that it can be verified that the client and the server are in sync. 
@@ -141,7 +141,7 @@ With a final checksum of `2145038063`
 }
 ```
 
-#### Tick message
+### Tick message
 It's received for all pairs, always. Every tick also includes the most current **ask** and **bid**.
 
 ```
