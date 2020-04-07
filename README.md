@@ -70,8 +70,11 @@ Follows the same format as the `walletHistory` entries in the REST API, addition
     userId: string,
     description: string,
     amount: number,
-    JSONdata: { // Contains data that is specific to the transaction, e.g. the references for deposit/withdraw operations, fees for orders, etc
-      price: string // ex. '6730.17 BTC/EUR',
+    JSONdata: { 
+      // Contains data that is specific to the transaction, 
+      // e.g. the references for deposit/withdraw operations, 
+      // fees for orders, etc
+      price: string, // ex. '6730.17 BTC/EUR',
       fees: number,
       notes: string, 
     },
