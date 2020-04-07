@@ -1,4 +1,6 @@
 const axios = require("axios");
+const chalk = require('chalk');
+const readline = require("readline");
 require("dotenv").config();
 
 (async () => {
@@ -6,9 +8,20 @@ require("dotenv").config();
     const token = process.env.TOKEN ||
       (await axios.get("https://api.coinmetro.com/open/demo/temp")).data.token;
 
-    console.log("TOKEN:", token); // Can be reused in .env for persistence
-    console.log("THE PARTY IS STARTING IN 10 SECONDS");
-    console.log("\n\n------------------\n\n");
+    console.log(chalk.bold("TOKEN:"), chalk.green(token)); // Can be reused in .env for persistence
+    /* Party Lights On - Just 4 Fun - Can Ignore */
+    console.log(chalk.bold("THE PARTY IS STARTING IN 10.0 SECONDS\n"));
+    const partyStart = Date.now() + 10000;
+    const party = setInterval(() => {
+      readline.moveCursor(process.stdout, -100, -2);
+      readline.clearLine(process.stdout);
+      console.log(
+        chalk[["red", "green", "yellow", "blue", "magenta", "cyan", "white"][Math.floor(Math.random() * 7)]]
+          .bold(`THE PARTY IS STARTING IN ${((partyStart - Date.now()) / 1000).toFixed(1)} SECONDS\n`));
+    }, 100);
+    setTimeout(() => clearInterval(party), 9900);
+    /* Party Lights Off */
+
 
     axios.defaults.headers["Authorization"] = `Bearer ${token}`;
 
@@ -36,12 +49,11 @@ require("dotenv").config();
             sellingQty: 0.5
           };
 
-        console.log("SENDING ORDER\n", order);
+        console.log(chalk.yellow("SENDING ORDER\n"), order);
 
         console.log("\n\n------------------\n\n");
 
-        console.log("ORDER EXECUTED")
-        console.log((await axios.post("https://exchange.coinmetro.com/open/orders/create", order)).data);
+        console.log(chalk.green("ORDER EXECUTED\n"), (await axios.post("https://exchange.coinmetro.com/open/orders/create", order)).data);
 
         console.log("\n\n------------------\n\n");
 
@@ -52,7 +64,6 @@ require("dotenv").config();
         process.exit(1);
       }
     }, 10000);
-
   } catch (err) {
     console.error("ERROR:\n", err);
   }
