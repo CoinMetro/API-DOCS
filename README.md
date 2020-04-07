@@ -8,19 +8,19 @@ The POSTman documentation of the REST API can be found @ https://documenter.getp
 
 The WebSockets can be accessed at
 
-wss://api.coinmetro.com/open/ws (demo)
-wss://api.coinmetro.com/ws (production)
+`wss://api.coinmetro.com/open/ws` (demo)\
+`wss://api.coinmetro.com/ws` (production)
 
 The connection supports two arguments in the query string
 
-`pairs`: Comma separated list of pairs for which book update subscription is requested
-`token`: JWT token generated through one of the login paths. For long-lived tokens, use `token`=_{deviceId}:{token}_
+`pairs`: Comma separated list of pairs for which book update subscription is requested\
+`token`: JWT token generated through one of the login paths. For long-lived tokens, use `token=_{deviceId}:{token}_`
 
 Both parameters are optional.
 
 The WebSockets emit the following messages:
 
-# Order Status Message
+#### Order Status Message
 It's only received on *authenticated* websockets (i.e. websockets that contain a `token` parameter)
 
 Follows the same format as returned by REST API endpoints
@@ -53,7 +53,7 @@ Follows the same format as returned by REST API endpoints
 }
 ```
 
-# Wallet Update Message
+#### Wallet Update Message
 It's only received on *authenticated* websockets (i.e. websockets that contain a `token` parameter)
 
 Follows the same format as the `walletHistory` entries in the REST API, additionally the **walletId**, **currency**, **label** and the most current **balance** are indicated
@@ -77,7 +77,7 @@ Follows the same format as the `walletHistory` entries in the REST API, addition
 }
 ```
 
-# Book Update message
+#### Book Update message
 It's only received for *subscribed* pairs (i.e. `pairs` indicated in query string);
 
 Every update includes a CRC32 `checksum` of the book so that it can be verified that the client and the server are in sync. 
@@ -134,7 +134,7 @@ With a final checksum of `2145038063`
 }
 ```
 
-# Tick message
+#### Tick message
 It's received for all pairs, always. Every tick also includes the most current **ask** and **bid**.
 
 ```
