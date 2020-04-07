@@ -32,6 +32,8 @@ require("dotenv").config();
 
     await new Promise(resolve => setTimeout(resolve, 10000));
 
+    console.log(chalk.bold("QUERY STRING:"), `wss://api.coinmetro.com/open/ws?token=${token}&pairs=BTCEUR`);
+
     // Makes sure that sufficient balances are available for operation
     if (balances.BTC.BTC < 1) {
       if (((balances.EUR || {}).EUR || 0) > 15000)
