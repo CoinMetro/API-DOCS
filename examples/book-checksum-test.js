@@ -55,12 +55,12 @@ multipliers = {
     OCEAN: 1e3,
     FLUX: 1e3,
     HTR: 1e4,
-  
+
     EUR: 1e3,
     GBP: 1e3,
     USD: 1e3,
     AUD: 1e3,
-  }
+}
 
 const roundTo = (n, rounding) => Math.round(n * rounding) / rounding;
 
@@ -83,15 +83,18 @@ const applyBookUpdate = (book, bookUpdate) => {
     return book;
 };
 
+// These symbols, - : |, are only applied to aid readability, 
+// They're removed before calculating the checksum, see line 150
 const bookChecksumString = book =>
     Object.keys(book.ask)
         .sort()
-        .map(p => `${p}${book.ask[p]}`)
-        .join("") +
+        .map(p => `${p}:${book.ask[p]}`)
+        .join("-") +
+    "|" +
     Object.keys(book.bid)
         .sort()
-        .map(p => `${p}${book.bid[p]}`)
-        .join("");
+        .map(p => `${p}:${book.bid[p]}`)
+        .join("-");
 
 let updates = 0;
 let resets = 0;
@@ -144,7 +147,7 @@ const applyNextUpdate = () => {
     books[pair] = applyBookUpdate(books[pair], bookUpdate);
     updates++;
     const checksumString = bookChecksumString(books[pair]);
-    const checksum = CRC32(checksumString);
+    const checksum = CRC32(checksumString.replace(/[|:-]/g, ""));
     // console.log(pair, bookUpdate.seqNumber);
     if (checksum !== bookUpdate.checksum) {
         resets++;
@@ -160,11 +163,19 @@ const applyNextUpdate = () => {
             })
         fetchBook(pair);
     }
+    if (!(updates % 1000))
+        console.log(
+            "CHECKSUM OK!",
+            {
+                receivedChecksum: bookUpdate.checksum,
+                checksum,
+                checksumString,
+                seqNumber,
+                book: books[pair],
+                bookUpdate
+            })
     // else console.log("OK", books[pair].seqNumber, pair, checksum, checksumString)
     setImmediate(applyNextUpdate);
 }
 
 applyNextUpdate();
-
-
-
