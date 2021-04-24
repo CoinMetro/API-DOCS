@@ -8,8 +8,8 @@ The POSTman documentation of the REST API can be found @ https://documenter.getp
 
 The WebSockets can be accessed at
 
-`wss://api.coinmetro.com/open/ws` (demo)\
-`wss://api.coinmetro.com/ws` (production)
+`wss://api.coinmetro.com/ws` (live environment)
+`wss://api.coinmetro.com/open/ws` (demo environment)\
 
 The connection supports two arguments in the query string
 
@@ -18,7 +18,11 @@ The connection supports two arguments in the query string
 
 Both parameters are optional.
 
-Example query string:
+Example query string (live environment):
+
+`wss://api.coinmetro.com/ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImU3Njk5OTNjIiwiZXhwIjoxNTg2MjgzNzEyNDI1LCJpZCI6IjVlOGNiZGI4OWM5NzQ5MjNjOGNhYWNhZSIsImlwIjoiMTQxLjguNDcuMTIzIiwiaWF0IjoxNTg2MjgxOTEyfQ.XA7tZGwmfRClzlm7SyB9fDfQl-SFKoPnjisOPMtY0sE&pairs=BTCEUR,LTCEUR`
+
+Example query string (demo environment):
 
 `wss://api.coinmetro.com/open/ws?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImU3Njk5OTNjIiwiZXhwIjoxNTg2MjgzNzEyNDI1LCJpZCI6IjVlOGNiZGI4OWM5NzQ5MjNjOGNhYWNhZSIsImlwIjoiMTQxLjguNDcuMTIzIiwiaWF0IjoxNTg2MjgxOTEyfQ.XA7tZGwmfRClzlm7SyB9fDfQl-SFKoPnjisOPMtY0sE&pairs=BTCEUR,LTCEUR`
 
@@ -160,7 +164,9 @@ It's received for all pairs, always. Every tick also includes the most current *
 
 ## Examples
 
-The folder /examples contains some basic JS examples showing the capabilities of the API.
+The folder /examples contains some basic JS examples showing the capabilities of the API. 
+
+All the example are set up to work with the _*demo*_ environment.
 
 *dumb-bot.js*: A bot that sells BTC every few seconds and prints some execution data. When BTC balance goes below a certain threshold, it buys BTC back.  
 Demonstrates basic authentication, market order creation, balance polling, fill polling.  
