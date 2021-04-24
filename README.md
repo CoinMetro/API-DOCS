@@ -197,15 +197,15 @@ For example, if we're considering BTCEUR and the `book` object is constituted as
 ```
 {
   pair: "BTCEUR",
-	bid: {
-		"50032.01": 100.00,
-		"50022.01": 20.20,
-	},
-	ask: {
-		"50040.30": 20.14453535,
-		"50050.20": 12.00,
+  bid: {
+    "50032.01": 100.00,
+    "50022.01": 20.20,
+    },
+  ask: {
+    "50040.30": 20.14453535,
+    "50050.20": 12.00,
     "102300.20": 1,
-	}
+  }
 }
 ```
 The string to checksum will be (bold for readability)
