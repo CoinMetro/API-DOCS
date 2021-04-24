@@ -92,8 +92,8 @@ The prices and quantities in the book are rounded to a finite number of digits
 
 The WebSockets can be accessed at
 
-`wss://api.coinmetro.com/ws` (live environment)
-`wss://api.coinmetro.com/open/ws` (demo environment)\
+`wss://api.coinmetro.com/ws` (live environment)\
+`wss://api.coinmetro.com/open/ws` (demo environment)
 
 The connection supports two arguments in the query string
 
