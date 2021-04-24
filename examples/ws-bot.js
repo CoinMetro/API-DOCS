@@ -4,6 +4,14 @@ const WS = require("ws");
 const readline = require("readline");
 require("dotenv").config();
 
+// IMPORTANT: 
+// All the API calls are made in the DEMO environment. 
+// To use the LIVE environment, drop the /open in the URL, e.g. 
+// DEMO                                                   => LIVE 
+// https://api.coinmetro.com/open/users/balances          => https://api.coinmetro.com/users/balances
+// https://api.coinmetro.com/open/exchange/orders/create  => https://api.coinmetro.com/exchange/orders/create
+// wss://api.coinmetro.com/open/ws                        => wss://api.coinmetro.com/ws
+
 (async () => {
   try {
     const token = process.env.TOKEN ||
@@ -37,7 +45,7 @@ require("dotenv").config();
     // Makes sure that sufficient balances are available for operation
     if (balances.BTC.BTC < 1) {
       if (((balances.EUR || {}).EUR || 0) > 15000)
-        await axios.post("https://exchange.coinmetro.com/open/orders/create", {
+        await axios.post("https://api.coinmetro.com/open/exchange/orders/create", {
           orderType: "market",
           buyingCurrency: "BTC",
           sellingCurrency: "EUR",
@@ -75,7 +83,7 @@ require("dotenv").config();
 
     console.log("\n\n------------------\n\n");
 
-    console.log(chalk.green("\nORDER EXECUTED\n"), (await axios.post("https://exchange.coinmetro.com/open/orders/create", order)).data);
+    console.log(chalk.green("\nORDER EXECUTED\n"), (await axios.post("https://api.coinmetro.com/open/exchange/orders/create", order)).data);
 
     await new Promise(resolve => setTimeout(resolve, 2500));
 

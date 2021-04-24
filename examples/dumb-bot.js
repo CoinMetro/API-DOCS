@@ -3,6 +3,13 @@ const chalk = require('chalk');
 const readline = require("readline");
 require("dotenv").config();
 
+// IMPORTANT: 
+// All the API calls are made in the DEMO environment. 
+// To use the LIVE environment, drop the /open in the URL, e.g. 
+// DEMO                                                   => LIVE 
+// https://api.coinmetro.com/open/users/balances          => https://api.coinmetro.com/users/balances
+// https://api.coinmetro.com/open/exchange/orders/create  => https://api.coinmetro.com/exchange/orders/create
+
 (async () => {
   try {
     const token = process.env.TOKEN ||
@@ -53,12 +60,12 @@ require("dotenv").config();
 
         console.log("\n\n------------------\n\n");
 
-        console.log(chalk.green("ORDER EXECUTED\n"), (await axios.post("https://exchange.coinmetro.com/open/orders/create", order)).data);
+        console.log(chalk.green("ORDER EXECUTED\n"), (await axios.post("https://api.coinmetro.com/open/exchange/orders/create", order)).data);
 
         console.log("\n\n------------------\n\n");
 
         console.log("FILLS SINCE THE BEGINNING OF THIS SESSION");
-        console.log((await axios.get(`https://exchange.coinmetro.com/open/fills/${startTime}`)).data);
+        console.log((await axios.get(`https://api.coinmetro.com/open/exchange/fills/${startTime}`)).data);
       } catch (err) {
         console.error("ERROR:\n", err);
         process.exit(1);

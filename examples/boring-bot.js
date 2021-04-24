@@ -3,6 +3,13 @@ const chalk = require("chalk");
 const readline = require("readline");
 require("dotenv").config();
 
+// IMPORTANT: 
+// All the API calls are made in the DEMO environment. 
+// To use the LIVE environment, drop the /open in the URL, e.g. 
+// DEMO                                                   => LIVE 
+// https://api.coinmetro.com/open/users/balances          => https://api.coinmetro.com/users/balances
+// https://api.coinmetro.com/open/exchange/orders/create  => https://api.coinmetro.com/exchange/orders/create
+
 (async () => {
   try {
     const token = process.env.TOKEN ||
@@ -29,14 +36,14 @@ require("dotenv").config();
     // Makes sure that sufficient balances are available for operation
     if (balances.BTC.BTC < 1 || ((balances.EUR || {}).EUR || 0) < 10000) {
       if (((balances.EUR || {}).EUR || 0) > 15000)
-        await axios.post("https://exchange.coinmetro.com/open/orders/create", {
+        await axios.post("https://api.coinmetro.com/open/exchange/orders/create", {
           orderType: "market",
           buyingCurrency: "BTC",
           sellingCurrency: "EUR",
           buyingQty: 1
         });
       else if (balances.BTC.BTC > 2)
-        await axios.post("https://exchange.coinmetro.com/open/orders/create", {
+        await axios.post("https://api.coinmetro.com/open/exchange/orders/create", {
           orderType: "market",
           buyingCurrency: "EUR",
           sellingCurrency: "BTC",
@@ -50,18 +57,18 @@ require("dotenv").config();
         console.log("\n\n------------------\n\n");
 
         // Lists currently pending orders
-        const activeOrders = (await axios.get("https://exchange.coinmetro.com/open/orders/active")).data;
+        const activeOrders = (await axios.get("https://api.coinmetro.com/open/exchange/orders/active")).data;
 
         // Cancels pending orders
         for (const order of activeOrders) {
-          const cancel = (await axios.put(`https://exchange.coinmetro.com/open/orders/cancel/${order.orderID}`)).data;
+          const cancel = (await axios.put(`https://api.coinmetro.com/open/exchange/orders/cancel/${order.orderID}`)).data;
           console.log("ORDER CANCELED", { orderID: cancel.orderID, completionTime: cancel.completionTime });
         }
 
         console.log("\n\n------------------\n\n");
 
         // Polls latest prices
-        const prices = (await axios.get("https://exchange.coinmetro.com/open/prices")).data;
+        const prices = (await axios.get("https://api.coinmetro.com/open/exchange/prices")).data;
 
         const BTCEUR = prices.latestPrices.find(price => price.pair == "BTCEUR");
         console.log("CURRENT BTCEUR PRICE:\n", BTCEUR);
@@ -87,10 +94,10 @@ require("dotenv").config();
           buyingQty: 0.1 * shortPrice
         }
 
-        console.log(chalk.green("ORDER ACCEPTED\n"), (await axios.post("https://exchange.coinmetro.com/open/orders/create", longOrder)).data);
-        console.log(chalk.green("ORDER ACCEPTED\n"), (await axios.post("https://exchange.coinmetro.com/open/orders/create", shortOrder)).data);
+        console.log(chalk.green("ORDER ACCEPTED\n"), (await axios.post("https://api.coinmetro.com/open/exchange/orders/create", longOrder)).data);
+        console.log(chalk.green("ORDER ACCEPTED\n"), (await axios.post("https://api.coinmetro.com/open/exchange/orders/create", shortOrder)).data);
 
-        const book = (await axios.get("https://exchange.coinmetro.com/open/book/BTCEUR")).data.book;
+        const book = (await axios.get("https://api.coinmetro.com/open/exchange/book/BTCEUR")).data.book;
 
         const shortPriceRounded = shortPrice.toFixed(2); // BTCEUR prices are rounded to 2 decimal digits
         const sortedAsk = Object.keys(book.ask).sort((a, b) => a - b);
