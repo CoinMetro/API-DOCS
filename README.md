@@ -1,5 +1,7 @@
 # A repository for documentation of the CoinMetro Crypto Exchange
 
+**IMPORTANT**: For all further queries and clarifications about the API, to signal what you believe might be an error or an unclear part of the documentation, please contact us through Intercom: https://help.coinmetro.com/en/
+
 ## REST API
 
 The POSTman documentation of the REST API can be found @ https://documenter.getpostman.com/view/3653795/SVfWN6KS
