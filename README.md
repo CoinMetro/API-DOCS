@@ -11,10 +11,10 @@ The prices and quantities in the book are rounded to a finite number of digits
 **Quantities**
 | Currency |  Digits  | Multiplier | 
 |----------|----------|------------|
-|  EUR     |     2    |     1e2    |
-|  USD     |     2    |     1e2    |
-|  GBP     |     2    |     1e2    |
-|  AUD     |     2    |     1e2    |
+|  EUR     |     3    |     1e3    |
+|  USD     |     3    |     1e3    |
+|  GBP     |     3    |     1e3    |
+|  AUD     |     3    |     1e3    |
 |  BTC     |     8    |     1e8    |
 |  ETH     |     6    |     1e6    |
 |  LTC     |     6    |     1e6    |
