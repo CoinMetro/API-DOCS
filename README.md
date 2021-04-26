@@ -204,7 +204,7 @@ For example, if we're considering BTCEUR and the `book` object is constituted as
     "50022.01": 20.20,
     },
   ask: {
-    "50040.30": 20.14453535,
+    "50040.30": 20.144535351,
     "50050.20": 12.00,
     "102300.20": 1,
   }
@@ -212,7 +212,7 @@ For example, if we're considering BTCEUR and the `book` object is constituted as
 ```
 The string to checksum will be (bold for readability)
 
-**102300.20**1**50040.30**20.144535351**50050.20**12**50022.01**20.2**50032.01**100
+**102300.20**1**50040.30**20.14453535**50050.20**12**50022.01**20.2**50032.01**100
 
 Please see `examples/book-checksum-test.js` for a fully functioning example.
 
