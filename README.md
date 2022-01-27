@@ -255,6 +255,20 @@ It's received for all pairs, always. Every tick also includes the most current *
 }
 ```
 
+### New Referral message
+It's only received on *authenticated* websockets (i.e. the connection string includes a valid `token` query parameter).
+
+It's received by an affiliate whenever a new user signs up with his refId
+
+```
+{
+  newReferral: {
+    tier: number, // The referral tier, 1 or 2
+    refId: string, // The user id of the affiliate receiving the notification 
+  }
+}
+```
+
 ## Examples
 
 The folder /examples contains some basic JS examples showing the capabilities of the API. 
