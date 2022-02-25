@@ -10,85 +10,9 @@ The POSTman documentation of the REST API can be found @ https://documenter.getp
 
 The prices and quantities in the book are rounded to a finite number of digits
 
-**Quantities**
-| Currency |  Digits  | Multiplier | 
-|----------|----------|------------|
-|  EUR     |     3    |     1e3    |
-|  USD     |     3    |     1e3    |
-|  GBP     |     3    |     1e3    |
-|  AUD     |     3    |     1e3    |
-|  BTC     |     8    |     1e8    |
-|  ETH     |     6    |     1e6    |
-|  LTC     |     6    |     1e6    |
-|  BCH     |     6    |     1e6    |
-|  XCM     |     3    |     1e3    |
-|  XRP     |     3    |     1e3    |
-|  XLM     |     3    |     1e3    |
-|  OMG     |     4    |     1e4    |
-|  LINK    |     4    |     1e4    |
-|  ENJ     |     4    |     1e4    |
-|  BAT     |     4    |     1e4    |
-|  PRQ     |     3    |     1e3    |
-|  QNT     |     4    |     1e4    |
-|  KDA     |     3    |     1e3    |
-|  USDC    |     3    |     1e3    |
-|  XTZ     |     4    |     1e4    |
-|  VXV     |     3    |     1e3    |
-|  DNA     |     3    |     1e3    |
-|  OCEAN   |     3    |     1e3    |
-|  FLUX    |     3    |     1e3    |
-|  HTR     |     4    |     1e4    |
+The most current roundings for all assets are found @ https://api.coinmetro.com/assets
 
-**Prices**
-|  Pair      |  Digits  | Multiplier | 
-|------------|----------|------------|
-|  XCMEUR    |     6    |     1e6    |
-|  BTCEUR    |     2    |     1e2    |
-|  LTCEUR    |     4    |     1e4    |
-|  ETHEUR    |     4    |     1e4    |
-|  BCHEUR    |     3    |     1e3    |
-|  XRPEUR    |     6    |     1e6    |
-|  XLMEUR    |     6    |     1e6    |
-|  OMGEUR    |     5    |     1e5    |
-|  LINKEUR   |     5    |     1e5    |
-|  ENJEUR    |     6    |     1e6    |
-|  BATEUR    |     6    |     1e6    |
-|  QNTEUR    |     4    |     1e4    |
-|  PRQEUR    |     6    |     1e6    |
-|  USDCEUR   |     5    |     1e5    |
-|  XTZEUR    |     4    |     1e4    |
-|  KDAEUR    |     5    |     1e5    |
-|  OCEANEUR  |     5    |     1e5    |
-|  FLUXEUR   |     5    |     1e5    |
-|  HTREUR    |     5    |     1e5    |
-|  QNTUSD    |     4    |     1e4    |
-|  XCMUSD    |     6    |     1e6    |
-|  BTCUSD    |     2    |     1e2    |
-|  LTCUSD    |     4    |     1e4    |
-|  ETHUSD    |     4    |     1e4    |
-|  BCHUSD    |     3    |     1e3    |
-|  XRPUSD    |     6    |     1e6    |
-|  KDAUSD    |     5    |     1e5    |
-|  VXVUSD    |     6    |     1e6    |
-|  DNAUSD    |     6    |     1e6    |
-|  LINKUSD   |     5    |     1e5    |
-|  OCEANUSD  |     5    |     1e5    |
-|  FLUXUSD   |     5    |     1e5    |
-|  LTCBTC    |     6    |     1e6    |
-|  ETHBTC    |     6    |     1e6    |
-|  XRPBTC    |     8    |     1e8    |
-|  QNTBTC    |     6    |     1e6    |
-|  BTCGBP    |     2    |     1e2    |
-|  ETHGBP    |     4    |     1e4    |
-|  XRPGBP    |     6    |     1e6    |
-|  XCMETH    |     7    |     1e7    |
-|  PRQBETH   |     7    |     1e7    |
-|  PRQETH    |     7    |     1e7    |
-|  VXVETH    |     7    |     1e7    |
-|  DNAETH    |     7    |     1e7    |
-|  BTCAUD    |     2    |     1e2    |
-|  ETHGBP    |     4    |     1e4    |
-
+The most current roundings for all pairs are found @ https://api.coinmetro.com/markets
 
 ## WebSockets
 
