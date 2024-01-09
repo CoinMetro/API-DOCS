@@ -6,7 +6,7 @@
 
 The POSTman documentation of the REST API can be found @ https://documenter.getpostman.com/view/3653795/SVfWN6KS
 
-## Rate Limiting
+## REST API Limits
 Most of our REST API endpoints are rate limited. There are two levels of rate limiting in place: 
 - IP based limitng (by cloudflare)
   - At most 500 calls per 10 seconds
