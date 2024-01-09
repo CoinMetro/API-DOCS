@@ -6,6 +6,45 @@
 
 The POSTman documentation of the REST API can be found @ https://documenter.getpostman.com/view/3653795/SVfWN6KS
 
+## REST API Limits
+Most of our REST API endpoints are rate limited. There are two levels of rate limiting in place: 
+- IP based limitng (by cloudflare)
+  - At most 500 calls per 10 seconds
+- User based limiting, at most:
+  - 1 call per 200 ms
+    - `/orders/create`
+    - `/orders/modify`
+  - 1 call per second
+    - `/swap`
+    - `/swap/confirm/:swapId`
+    - `/oauth/token`
+    - `/oauth/redirect-uri`
+  - 1 call per 5 seconds:
+    - `/users/wallets/balance-history`
+    - `/ignium/transactions`
+    - `/orders/history`
+    - `/fills`
+    - `/users/wallets/history`
+  - 20 calls per 1 minute:
+    - `/orders/create`
+    - `/orders/modify`
+  - 100 calls per 1 minute:
+    - `/book`
+    - `/candles`
+    - `/ticks`
+  - 1 call per 1 minute:
+    - `/balances`
+    - `/webhook/test`
+  - 2 calls per 5 minutes:
+    - `/verify/email`
+    - `/verify/resendemail`
+  - 300 calls per 1 hour:
+    - `/orders/create`
+    - `/orders/modify`
+  - 1000 calls per 1 day:
+    - `/orders/create`
+    - `/orders/modify`
+
 ## Roundings and multipliers
 
 The prices and quantities in the book are rounded to a finite number of digits
